@@ -96,12 +96,13 @@ main {
   /*  */
 }
 
-#user-input-form {
+#user-input-field {
   display: none;
   background-color: #fde68a;
   border-radius: 8px;
   padding: 1rem;
   flex: 1;
+  height: 400px;
 }
 
 form ul {

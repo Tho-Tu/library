@@ -29,8 +29,8 @@ addBookToLibrary(bookThree);
 const bookCardSection = document.querySelector("#book-card-section");
 
 function displayBooks() {
+  bookCardSection.textContent = "";
   for (const bookObject of myLibrary) {
-    // display each book
     const newBook = document.createElement("div");
     newBook.classList.add("book");
 
@@ -60,25 +60,36 @@ function displayBooks() {
 
 displayBooks();
 
-const submitButton = document.querySelector("#submit-button");
-submitButton.addEventListener(
-  "click",
-  (event) => {
-    event.preventDefault();
-  },
-  false
-);
-
+// shows/hides the form input
 const formButton = document.querySelector("#add-new-book");
-const userInputForm = document.querySelector("#user-input-form");
+const userInputField = document.querySelector("#user-input-field");
 let showForm = false;
 
 formButton.addEventListener("click", () => {
   if (showForm === false) {
-    userInputForm.style.display = "block";
+    userInputField.style.display = "block";
     showForm = true;
   } else {
-    userInputForm.style.display = "none";
+    userInputField.style.display = "none";
     showForm = false;
   }
 });
+
+// form submit
+const userForm = document.querySelector("#user-input-field");
+userForm.addEventListener(
+  "submit",
+  (event) => {
+    event.preventDefault();
+    let title = document.querySelector("#book-title").value;
+    let author = document.querySelector("#book-author").value;
+    let pages = document.querySelector("#book-pages").value;
+    let read = document.querySelector("#book-read").value;
+    console.log(title);
+    let bookObject = new Book(title, author, pages, read);
+    console.log(bookObject);
+    addBookToLibrary(bookObject);
+    displayBooks();
+  },
+  false
+);
