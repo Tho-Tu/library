@@ -10,19 +10,29 @@ body {
 }
 
 header {
-  color: white;
+  color: #ffffff;
   background-color: #fb923c;
   margin: 0;
+  padding: 0 3rem;
   display: grid;
-  justify-content: center;
+  grid-template-columns: 1fr 90px;
+  justify-content: space-between;
   box-shadow: 0 0 10px #78350f;
   z-index: 1000;
 }
 
-main {
-  display: flex;
-  gap: 2rem;
-  margin: 2rem;
+#add-new-book {
+  border-radius: 4rem;
+  width: 60px;
+  height: 60px;
+  align-self: center;
+  padding: 0;
+}
+
+#add-new-book img {
+  filter: invert(100%) sepia(0%) saturate(4%) hue-rotate(189deg)
+    brightness(103%) contrast(106%);
+  padding: 0;
 }
 
 button {
@@ -41,7 +51,12 @@ button:hover {
 button:active {
   background-color: #78350f;
   box-shadow: 0 5px 10px black;
-  translate: 0px 4px;
+}
+
+main {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem;
 }
 
 #book-card-section {
@@ -81,7 +96,11 @@ button:active {
   /*  */
 }
 
-.user-input {
+#user-input-form {
+  display: none;
+  background-color: #fde68a;
+  border-radius: 8px;
+  padding: 1rem;
   flex: 1;
 }
 

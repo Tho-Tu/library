@@ -46,7 +46,7 @@ function displayBooks() {
 
     const newPages = document.createElement("div");
     newPages.classList.add("display-pages");
-    newPages.textContent = `${bookObject.pages}`;
+    newPages.textContent = `${bookObject.pages} Pages`;
     newBook.appendChild(newPages);
 
     const newRead = document.createElement("div");
@@ -59,3 +59,26 @@ function displayBooks() {
 }
 
 displayBooks();
+
+const submitButton = document.querySelector("#submit-button");
+submitButton.addEventListener(
+  "click",
+  (event) => {
+    event.preventDefault();
+  },
+  false
+);
+
+const formButton = document.querySelector("#add-new-book");
+const userInputForm = document.querySelector("#user-input-form");
+let showForm = false;
+
+formButton.addEventListener("click", () => {
+  if (showForm === false) {
+    userInputForm.style.display = "block";
+    showForm = true;
+  } else {
+    userInputForm.style.display = "none";
+    showForm = false;
+  }
+});

@@ -8,7 +8,15 @@
     <script src="./script.js" defer></script>
   </head>
   <body>
-    <header><h1>Library</h1></header>
+    <header>
+      <h1>Virtual Library 📖 📚</h1>
+      <button type="button" id="add-new-book">
+        <img
+          src="./assets/images/add_FILL0_wght400_GRAD0_opsz48.svg"
+          alt="Add New Book"
+        />
+      </button>
+    </header>
     <main>
       <div id="book-card-section">
         <div class="book">
@@ -18,7 +26,7 @@
           <div class="display-read">Read</div>
         </div>
       </div>
-      <div class="user-input">
+      <div id="user-input-form">
         <form action="./index.html" method="post">
           <ul>
             <li>
@@ -38,7 +46,7 @@
               <input type="checkbox" name="book-read" id="book-read" />
             </li>
           </ul>
-          <button type="submit">Add New Book</button>
+          <button type="submit" id="submit-button">Add New Book</button>
         </form>
       </div>
     </main>
