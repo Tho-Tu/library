@@ -5,7 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
     <link rel="stylesheet" href="./styles.css" />
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <header><h1>Library</h1></header>
+    <main>
+      <div id="book-card-section">
+        <div class="book">
+          <div class="display-title">Example Title</div>
+          <div class="display-author">Example Author</div>
+          <div class="display-pages">1234 Pages</div>
+          <div class="display-read">Read</div>
+        </div>
+      </div>
+      <div class="user-input">
+        <form action="./index.html" method="post">
+          <ul>
+            <li>
+              <label for="book-title">Book Title</label>
+              <input type="text" name="book-title" id="book-title" required />
+            </li>
+            <li>
+              <label for="book-author">Author</label>
+              <input type="text" name="book-author" id="book-author" required />
+            </li>
+            <li>
+              <label for="book-pages">Number of Pages</label>
+              <input type="number" name="book-pages" id="book-pages" required />
+            </li>
+            <li>
+              <label for="book-read">Read</label>
+              <input type="checkbox" name="book-read" id="book-read" />
+            </li>
+          </ul>
+          <button type="submit">Add New Book</button>
+        </form>
+      </div>
+    </main>
+  </body>
 </html>

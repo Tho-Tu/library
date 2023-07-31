@@ -5,18 +5,57 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = () => {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}.`;
-  };
 }
 
-const theHobbit = new Book(
-  "The Hobbit",
-  "J.R.R. Tolkien",
-  "295",
-  "not read yet"
+function addBookToLibrary(bookObject) {
+  myLibrary.push(bookObject);
+}
+
+const bookOne = new Book("The Hobbit", "J.R.R. Tolkien", "295", false);
+
+const bookTwo = new Book(
+  "Never Split the Difference",
+  "Chris Voss",
+  "274",
+  true
 );
 
-function addBookToLibrary() {
-  // do stuff here
+const bookThree = new Book("Zero to One", "Peter Thiel", "210", true);
+
+addBookToLibrary(bookOne);
+addBookToLibrary(bookTwo);
+addBookToLibrary(bookThree);
+
+const bookCardSection = document.querySelector("#book-card-section");
+
+function displayBooks() {
+  for (const bookObject of myLibrary) {
+    // display each book
+    const newBook = document.createElement("div");
+    newBook.classList.add("book");
+
+    const newTitle = document.createElement("div");
+    newTitle.classList.add("display-title");
+    newTitle.textContent = `${bookObject.title}`;
+    newBook.appendChild(newTitle);
+
+    const newAuthor = document.createElement("div");
+    newAuthor.classList.add("display-author");
+    newAuthor.textContent = `${bookObject.author}`;
+    newBook.appendChild(newAuthor);
+
+    const newPages = document.createElement("div");
+    newPages.classList.add("display-pages");
+    newPages.textContent = `${bookObject.pages}`;
+    newBook.appendChild(newPages);
+
+    const newRead = document.createElement("div");
+    newRead.classList.add("display-read");
+    newRead.textContent = `Read: ${bookObject.read}`;
+    newBook.appendChild(newRead);
+
+    bookCardSection.appendChild(newBook);
+  }
 }
+
+displayBooks();
