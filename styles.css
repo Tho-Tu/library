@@ -81,11 +81,11 @@ main {
 }
 
 .display-title {
-  /*  */
+  font-weight: bold;
 }
 
 .display-author {
-  /*  */
+  font-style: italic;
 }
 
 .display-pages {

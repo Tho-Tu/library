@@ -7,10 +7,16 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-function addBookToLibrary(bookObject) {
-  myLibrary.push(bookObject);
-}
+// toggle book's read status on object
+Book.prototype.toggleRead = function () {
+  if (this.read === true) {
+    this.read = false;
+  } else {
+    this.read = true;
+  }
+};
 
+// DEMO BOOKS //
 const bookOne = new Book("The Hobbit", "J.R.R. Tolkien", "295", false);
 
 const bookTwo = new Book(
@@ -25,6 +31,10 @@ const bookThree = new Book("Zero to One", "Peter Thiel", "210", true);
 addBookToLibrary(bookOne);
 addBookToLibrary(bookTwo);
 addBookToLibrary(bookThree);
+
+function addBookToLibrary(bookObject) {
+  myLibrary.push(bookObject);
+}
 
 function displayBooks() {
   const bookCardSection = document.querySelector("#book-card-section");
@@ -66,6 +76,7 @@ function displayBooks() {
     newReadLabel.textContent = `Read: `;
 
     newReadCheckBox.setAttribute("type", "checkbox");
+    newReadCheckBox.setAttribute("data-index", `${bookIndex}`);
     newReadCheckBox.setAttribute(
       "id",
       `${bookObject.title.replace(/\s+/g, "-").toLowerCase()}-read`
@@ -82,19 +93,29 @@ function displayBooks() {
     newDelete.setAttribute("type", "button");
     newDelete.textContent = "Delete";
     newDelete.setAttribute("data-index", `${bookIndex}`);
-    bookIndex += 1;
+
     newBook.appendChild(newDelete);
 
     bookCardSection.appendChild(newBook);
+    bookIndex += 1;
   }
   // delete book
-  const bookDeleteButtons = document.querySelectorAll("[data-index]");
+  const bookDeleteButtons = document.querySelectorAll("button[data-index]");
 
   bookDeleteButtons.forEach((deleteButton) => {
     deleteButton.addEventListener("click", () => {
       let index = deleteButton.getAttribute("data-index");
       myLibrary.splice(index, 1);
       displayBooks();
+    });
+  });
+
+  // changes read in object
+  const readCheckBoxes = document.querySelectorAll("input[data-index]");
+  readCheckBoxes.forEach((readCheckBox) => {
+    readCheckBox.addEventListener("change", () => {
+      let index = readCheckBox.getAttribute("data-index");
+      myLibrary[index].toggleRead();
     });
   });
 }
@@ -142,5 +163,3 @@ userForm.addEventListener(
   },
   false
 );
-
-// toggle book's read status on object
