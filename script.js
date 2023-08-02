@@ -11,20 +11,21 @@ function addBookToLibrary(bookObject) {
   myLibrary.push(bookObject);
 }
 
-const bookOne = new Book("The Hobbit", "J.R.R. Tolkien", "295", false);
+// const bookOne = new Book("The Hobbit", "J.R.R. Tolkien", "295", false);
 
-const bookTwo = new Book(
-  "Never Split the Difference",
-  "Chris Voss",
-  "274",
-  true
-);
+// const bookTwo = new Book(
+//   "Never Split the Difference",
+//   "Chris Voss",
+//   "274",
+//   true
+// );
 
-const bookThree = new Book("Zero to One", "Peter Thiel", "210", true);
+// const bookThree = new Book("Zero to One", "Peter Thiel", "210", true);
 
-addBookToLibrary(bookOne);
-addBookToLibrary(bookTwo);
-addBookToLibrary(bookThree);
+// addBookToLibrary(bookOne);
+// addBookToLibrary(bookTwo);
+// addBookToLibrary(bookThree);
+// displayBooks();
 
 const bookCardSection = document.querySelector("#book-card-section");
 
@@ -58,14 +59,12 @@ function displayBooks() {
   }
 }
 
-displayBooks();
-
-// shows/hides the form input
-const formButton = document.querySelector("#add-new-book");
+// displays/hides the form input
+const displayForm = document.querySelector("#add-new-book");
 const userInputField = document.querySelector("#user-input-field");
 let showForm = false;
 
-formButton.addEventListener("click", () => {
+displayForm.addEventListener("click", () => {
   if (showForm === false) {
     userInputField.style.display = "block";
     showForm = true;
@@ -76,20 +75,28 @@ formButton.addEventListener("click", () => {
 });
 
 // form submit
-const userForm = document.querySelector("#user-input-field");
+const userForm = document.querySelector("#user-input-form");
 userForm.addEventListener(
   "submit",
   (event) => {
     event.preventDefault();
-    let title = document.querySelector("#book-title").value;
-    let author = document.querySelector("#book-author").value;
-    let pages = document.querySelector("#book-pages").value;
-    let read = document.querySelector("#book-read").value;
-    console.log(title);
-    let bookObject = new Book(title, author, pages, read);
-    console.log(bookObject);
+
+    const title = document.querySelector("#book-title");
+    const author = document.querySelector("#book-author");
+    const pages = document.querySelector("#book-pages");
+    const read = document.querySelector("#book-read");
+    const bookObject = new Book(
+      title.value,
+      author.value,
+      pages.value,
+      read.checked
+    );
+
     addBookToLibrary(bookObject);
     displayBooks();
+
+    userForm.reset();
+    title.focus();
   },
   false
 );

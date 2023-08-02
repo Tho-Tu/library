@@ -112,6 +112,12 @@ form ul {
   font-size: larger;
 }
 
+form ul li:last-child {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
 li input {
   display: block;
   margin: 8px 0;
