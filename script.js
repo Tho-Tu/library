@@ -139,15 +139,26 @@ displayForm.addEventListener("click", () => {
 
 // form submit
 const userForm = document.querySelector("#user-input-form");
+const title = document.querySelector("#book-title");
+const author = document.querySelector("#book-author");
+const pages = document.querySelector("#book-pages");
+const read = document.querySelector("#book-read");
+
+pages.addEventListener("input", (e) => {
+  if (pages.validity.rangeUnderflow) {
+    pages.setCustomValidity("Please enter a number higher than 1!");
+  } else if (pages.validity.rangeOverflow) {
+    pages.setCustomValidity("Please enter a number lower than 5000!");
+  } else {
+    pages.setCustomValidity("");
+  }
+});
+
 userForm.addEventListener(
   "submit",
   (event) => {
     event.preventDefault();
 
-    const title = document.querySelector("#book-title");
-    const author = document.querySelector("#book-author");
-    const pages = document.querySelector("#book-pages");
-    const read = document.querySelector("#book-read");
     const bookObject = new Book(
       title.value,
       author.value,
